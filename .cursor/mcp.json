@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "jetro": {
+      "type": "stdio",
+      "command": "/Users/amankumar/.jetro/runtime/node-darwin-arm64",
+      "args": [
+        "/Users/amankumar/.jetro/mcp-server/index.js"
+      ],
+      "env": {
+        "JET_WORKSPACE": "/Users/amankumar/Documents/Fill Anything",
+        "JET_API_URL": "https://api.jetro.ai",
+        "JET_JWT": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImVlOTA0NmVhZDJlMDUwMDAxMGVkNTA0M2I0ODNkODRiMGM1MmM3YzQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vamV0cm8tY2RhZWYiLCJhdWQiOiJqZXRyby1jZGFlZiIsImF1dGhfdGltZSI6MTc4MDU2NTE3NiwidXNlcl9pZCI6ImdQTWJsOEdybUxSczNaWWwxa0pHQ2dLYjZ5dzEiLCJzdWIiOiJnUE1ibDhHcm1MUnMzWllsMWtKR0NnS2I2eXcxIiwiaWF0IjoxNzgxNjAwNzk0LCJleHAiOjE3ODE2MDQzOTQsImVtYWlsIjoia2Vqcml3YWxhbWFuOTE2NkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJrZWpyaXdhbGFtYW45MTY2QGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.fsgm3LJGEI4LHrkPgKOiFmJGbgm0aGvjpukj_O54f2BCQU2owC8FH13yXPX7bxV2wvNx_c2BpP4QQwGTUoUxK9fRBa8KhZ1z3sPFzwud6ANvyV7vZtaB-Oi-RSXHElRrmvpuhG5DCOJWthQDTYp7_INWFrNbS2YZRXQDdHgnD_KWtArAdhXeld2IpJGf0dOIMarTF4E-g_nFjaafsR_9P8iCHK0rEjyPAvdLUFtvoG8tiitnqmiVfbQo41q-kDlXo278HUwYpk5uISj3QYwURJyI6Hg0qBrj4l-bWPqJmOxq8iMmwScloGGIg4F3Kuoyrll0H_ra8KHAEsSK5XL8Dw",
+        "PATH": "/Users/amankumar/.jetro/runtime:/Users/amankumar/.antigravity-ide/antigravity-ide/bin:/Users/amankumar/.antigravity-ide/antigravity-ide/bin:/Users/amankumar/.antigravity-ide/antigravity-ide/bin:/Users/amankumar/.antigravity-ide/antigravity-ide/bin:/Users/amankumar/.antigravity-ide/antigravity-ide/bin:/Users/amankumar/.antigravity-ide/antigravity-ide/bin:/Users/amankumar/.antigravity-ide/antigravity-ide/bin:/Users/amankumar/.antigravity-ide/antigravity-ide/bin:/Users/amankumar/.antigravity-ide/antigravity-ide/bin:/Users/amankumar/.opencode/bin:/Users/amankumar/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/pkg/env/active/bin:/opt/pmk/env/global/bin"
+      }
+    }
+  }
+}

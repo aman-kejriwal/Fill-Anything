@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Form - Fill Anything</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f0f2f5; padding: 40px 20px; }
+    .container { max-width: 600px; margin: 0 auto; }
+    h1 { text-align: center; color: #1a1a2e; margin-bottom: 8px; }
+    .subtitle { text-align: center; color: #666; margin-bottom: 30px; }
+    form { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); margin-bottom: 30px; }
+    h2 { color: #4F46E5; margin-bottom: 20px; font-size: 18px; border-bottom: 2px solid #EEF2FF; padding-bottom: 10px; }
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-weight: 600; color: #374151; margin-bottom: 6px; font-size: 14px; }
+    input, select, textarea { width: 100%; padding: 10px 14px; border: 1.5px solid #D1D5DB; border-radius: 8px; font-size: 14px; transition: border-color 0.2s; outline: none; }
+    input:focus, select:focus, textarea:focus { border-color: #4F46E5; box-shadow: 0 0 0 3px rgba(79,70,229,0.1); }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .row-3 { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; }
+    textarea { resize: vertical; min-height: 80px; }
+    .checkbox-group { display: flex; gap: 16px; padding: 8px 0; }
+    .checkbox-group label { display: flex; align-items: center; gap: 6px; font-weight: normal; cursor: pointer; }
+    .checkbox-group input { width: auto; }
+    button { background: #4F46E5; color: white; border: none; padding: 12px 32px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; display: block; margin: 20px auto 0; }
+    button:hover { background: #4338CA; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📝 Test Form</h1>
+    <p class="subtitle">Open the Fill Anything extension popup to auto-fill this form</p>
+
+    <!-- Contact Form -->
+    <form id="contactForm">
+      <h2>Contact Information</h2>
+      <div class="row">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" autocomplete="given-name" placeholder="John">
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" autocomplete="family-name" placeholder="Doe">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" autocomplete="name" placeholder="John Doe">
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" autocomplete="email" placeholder="john@example.com">
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" autocomplete="tel" placeholder="+1 (555) 123-4567">
+      </div>
+    </form>
+
+    <!-- Address Form -->
+    <form id="addressForm">
+      <h2>Address</h2>
+      <div class="form-group">
+        <label for="addressLine1">Street Address</label>
+        <input type="text" id="addressLine1" name="addressLine1" autocomplete="address-line1" placeholder="123 Main Street">
+      </div>
+      <div class="form-group">
+        <label for="addressLine2">Address Line 2</label>
+        <input type="text" id="addressLine2" name="addressLine2" autocomplete="address-line2" placeholder="Apt 4B">
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" autocomplete="address-level2" placeholder="New York">
+      </div>
+      <div class="row-3">
+        <div class="form-group">
+          <label for="state">State</label>
+          <input type="text" id="state" name="state" autocomplete="address-level1" placeholder="New York">
+        </div>
+        <div class="form-group">
+          <label for="zipCode">ZIP Code</label>
+          <input type="text" id="zipCode" name="zipCode" autocomplete="postal-code" placeholder="10001">
+        </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <select id="country" name="country" autocomplete="country">
+            <option value="">Select...</option>
+            <option value="US">United States</option>
+            <option value="CA">Canada</option>
+            <option value="UK">United Kingdom</option>
+            <option value="AU">Australia</option>
+            <option value="IN">India</option>
+          </select>
+        </div>
+      </div>
+    </form>
+
+    <!-- Personal Details Form -->
+    <form id="personalForm">
+      <h2>Personal Details</h2>
+      <div class="row">
+        <div class="form-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" name="dob" autocomplete="bday">
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender" autocomplete="sex">
+            <option value="">Select...</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="occupation">Occupation</label>
+        <input type="text" id="occupation" name="occupation" placeholder="Software Engineer">
+      </div>
+      <div class="form-group">
+        <label for="employer">Company</label>
+        <input type="text" id="employer" name="company" placeholder="Acme Corp">
+      </div>
+      <div class="form-group">
+        <label for="website">Website</label>
+        <input type="url" id="website" name="website" placeholder="https://yoursite.com">
+      </div>
+    </form>
+
+    <!-- Payment Form -->
+    <form id="paymentForm">
+      <h2>Payment Information</h2>
+      <div class="form-group">
+        <label for="cardName">Name on Card</label>
+        <input type="text" id="cardName" name="cardName" placeholder="John Doe">
+      </div>
+      <div class="form-group">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" name="cardNumber" placeholder="4111 1111 1111 1111">
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <label for="cardExpiry">Expiry Date</label>
+          <input type="text" id="cardExpiry" name="cardExpiry" placeholder="MM/YY">
+        </div>
+        <div class="form-group">
+          <label for="cardCvv">CVV</label>
+          <input type="text" id="cardCvv" name="cardCvv" placeholder="123">
+        </div>
+      </div>
+    </form>
+
+    <!-- Misc Form -->
+    <form id="miscForm">
+      <h2>Additional Information</h2>
+      <div class="form-group">
+        <label for="notes">Comments / Notes</label>
+        <textarea id="notes" name="notes" placeholder="Any additional notes..."></textarea>
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="johndoe">
+      </div>
+      <button type="submit">Submit Form</button>
+    </form>
+  </div>
+</body>
+</html>

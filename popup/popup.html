@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fill Anything</title>
+  <style>
+    @import url('popup.css');
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="header-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20h9"/>
+          <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+      </div>
+      <h1>Fill Anything</h1>
+      <p class="subtitle">Auto-fill any form instantly</p>
+    </div>
+
+    <!-- Setup Warning -->
+    <div class="setup-warning" id="setupWarning" style="display:none;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span>Personal info not configured! Click <strong>Edit Personal Info</strong> in Settings.</span>
+    </div>
+
+    <!-- Status Section -->
+    <div class="status-section">
+      <div class="status-badge" id="formStatus">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText">Detecting forms...</span>
+      </div>
+      <div class="form-count" id="formCount"></div>
+    </div>
+
+    <!-- Main Actions -->
+    <div class="actions">
+      <button class="btn btn-primary" id="fillAllBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6 9 17l-5-5"/>
+        </svg>
+        Fill All Fields
+      </button>
+      <div class="btn-row">
+        <button class="btn btn-secondary" id="fillContactBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          Contact
+        </button>
+        <button class="btn btn-secondary" id="fillAddressBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          Address
+        </button>
+        <button class="btn btn-secondary" id="fillAllVisibleBtn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <line x1="3" y1="9" x2="21" y2="9"/>
+            <line x1="9" y1="21" x2="9" y2="9"/>
+          </svg>
+          All Visible
+        </button>
+      </div>
+      <button class="btn btn-danger" id="clearBtn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 6 5 6 21 6"/>
+          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+        </svg>
+        Clear Filled Fields
+      </button>
+    </div>
+
+    <!-- Progress Section -->
+    <div class="progress-section" id="progressSection" style="display:none;">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-text" id="progressText"></div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="results-section" id="resultsSection" style="display:none;">
+      <div class="results-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        <span class="results-title">Fill Results</span>
+      </div>
+      <div class="results-list" id="resultsList"></div>
+    </div>
+
+    <!-- Settings -->
+    <div class="settings-section">
+      <button class="settings-toggle" id="settingsToggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        <span>Settings</span>
+        <svg class="chevron" id="settingsChevron" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="settings-panel" id="settingsPanel" style="display:none;">
+        <div class="settings-group">
+          <label class="settings-label">Fill Animation Delay</label>
+          <select id="animationDelay">
+            <option value="0">No delay</option>
+            <option value="50">Fast (50ms)</option>
+            <option value="100" selected>Normal (100ms)</option>
+            <option value="200">Slow (200ms)</option>
+            <option value="500">Very slow (500ms)</option>
+          </select>
+        </div>
+        <div class="settings-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="highlightFilled" checked>
+            <span>Highlight filled fields</span>
+          </label>
+        </div>
+        <div class="settings-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="skipDisabled" checked>
+            <span>Skip disabled fields</span>
+          </label>
+        </div>
+        <div class="settings-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="skipReadonly" checked>
+            <span>Skip read-only fields</span>
+          </label>
+        </div>
+        <div class="settings-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="fuzzyFallback" checked>
+            <span>Smart guess for unmatched fields</span>
+          </label>
+        </div>
+        <div class="settings-group">
+          <div class="btn-row">
+            <button class="btn btn-outline" id="editInfoBtn" style="flex: 1;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+              </svg>
+              Edit File
+            </button>
+            <button class="btn btn-outline" id="importInfoBtn" style="flex: 1;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="17 8 12 3 7 8"/>
+                <line x1="12" y1="3" x2="12" y2="15"/>
+              </svg>
+              Import JSON
+            </button>
+          </div>
+          <input type="file" id="importFile" accept=".json" style="display: none;" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <span>v1.0.0</span>
+      <span>&bull;</span>
+      <span id="lastSaved">Not configured</span>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
