@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Test output
+test-results/
+
+# Personal data
+personal-info.json
+
+# Jetro platform cache/config
+.jetro/
+
+# IDE / editor config
+.cursor/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# AI agent rules (local to this machine)
+.agents/
+AGENT.md
+CLAUDE.md
+.windsurfrules
+
+# MCP server configuration (local)
+.mcp.json
+
+# GitHub IDE instructions
+.github/copilot-instructions.md
+
+# Debug / development scripts
+debug-cdp.js
+test-extension.js
